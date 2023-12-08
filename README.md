@@ -1,6 +1,6 @@
 # neovim
 
-I did this inspired by [How to create your own Neovim flake](https://primamateria.github.io/blog/neovim-nix). To run [install nix](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer) and then run
+I did this inspired by [How to create your own Neovim flake](https://primamateria.github.io/blog/neovim-nix). To run [install nix](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer) and then do
 ```
 nix run github:rigille/neovim
 ```
