@@ -11,8 +11,10 @@
   };
   outputs = { self, nixpkgs, flake-utils, neovim }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in {
-        packages.default = pkgs.wrapNeovim neovim.packages.${system}.neovim {
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        nvim = neovim.packages.${system}.neovim;
+        nvim_wrapped = pkgs.wrapNeovim nvim {
             configure = {
               packages.myVimPackage = {
                 start = with pkgs.vimPlugins; [
@@ -45,9 +47,6 @@
                 lua << EOF
                 local vim = vim
                 local opt = vim.opt
-
-                opt.foldmethod = "expr"
-                opt.foldexpr = "nvim_treesitter#foldexpr()"
 
                 local builtin = require('telescope.builtin')
                 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -99,5 +98,13 @@
               '';
             };
         };
+      in {
+        packages.default = pkgs.writeShellApplication {
+	  name = "nvim";
+	  runtimeInputs = [ pkgs.nodePackages.pyright pkgs.nil pkgs.ccls ];
+	  text = ''
+	    ${nvim_wrapped}/bin/nvim "$@"
+	  '';
+	};
       });
 }
