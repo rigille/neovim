@@ -2,7 +2,7 @@
 {
   description = "Rígille's neovim flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=23.05";
     flake-utils.url = "github:numtide/flake-utils";
     neovim = {
       url = "github:neovim/neovim/stable?dir=contrib";
