@@ -44,6 +44,20 @@
                 nnoremap <silent> <C-j> :KittyNavigateDown<cr>
                 nnoremap <silent> <C-k> :KittyNavigateUp<cr>
                 nnoremap <silent> <C-l> :KittyNavigateRight<cr>
+
+                " Map <leader>r to save and run pdflatex if file has .tex extension
+                autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR>
+                autocmd FileType tex nnoremap <leader>c :w<CR>:!git add .<CR>:!git commit -m '.'<CR>:!git push<CR>
+
+                set updatetime=200
+
+                augroup p9_nvim_autoread
+                  autocmd!
+                  autocmd BufRead,BufNewFile *.p9 setlocal autoread
+                  autocmd CursorHold,CursorHoldI *.p9 checktime
+                  autocmd FocusGained,BufEnter *.p9 checktime
+                augroup END
+
                 lua << EOF
                 local vim = vim
                 local opt = vim.opt
