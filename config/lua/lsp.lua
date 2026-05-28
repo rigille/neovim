@@ -1,9 +1,11 @@
 -- config/lua/lsp.lua
-vim.lsp.config('pyright', {})
+vim.lsp.config('basedpyright', {})
+vim.lsp.config('ruff', {})
+vim.lsp.config('rust_analyzer', {})
 vim.lsp.config('nil_ls', {})
 vim.lsp.config('ccls', {})
 
-vim.lsp.enable({'pyright', 'nil_ls', 'ccls'})
+vim.lsp.enable({ 'basedpyright', 'ruff', 'rust_analyzer', 'nil_ls', 'ccls' })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),

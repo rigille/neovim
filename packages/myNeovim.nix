@@ -12,7 +12,14 @@ let
   };
 in pkgs.writeShellApplication {
   name = "nvim";
-  runtimeInputs = with pkgs; [ pyright nil ccls ];
+  runtimeInputs = with pkgs; [
+    basedpyright
+    ruff
+    rust-analyzer
+    nil
+    ccls
+    coqPackages.coq-lsp
+  ];
   text = ''
     ${myNeovimUnwrapped}/bin/nvim "$@"
   '';
