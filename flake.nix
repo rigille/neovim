@@ -23,6 +23,15 @@
               name = "auto-reload-nvim";
               src = auto-reload-nvim;
             };
+            Coqtail = prev.vimUtils.buildVimPlugin {
+              name = "Coqtail";
+              src = prev.fetchFromGitHub {
+                owner = "whonore";
+                repo = "Coqtail";
+                rev = "master";
+                hash = "sha256-oMAfmdjOA3MHhlo9tiBBp2lhuIK7OKVpqgf51l8PAyA=";
+              };
+            };
           };
         };
 
