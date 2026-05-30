@@ -4,7 +4,7 @@ let
   plugins = import ../plugins.nix { inherit pkgs; };
 in
 let
-  myNeovimUnwrapped = pkgs.wrapNeovim pkgs.neovim {
+  myNeovimUnwrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
     withPython3 = true;
     extraPython3Packages = ps: with ps; [ pynvim ];
     configure = {
