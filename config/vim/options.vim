@@ -5,6 +5,7 @@ set clipboard=unnamedplus
 set number
 set foldlevel=99
 set updatetime=200
+set shortmess+=I
 
 tnoremap <Esc> <C-\><C-n>
 let g:kitty_navigator_no_mappings = 1

@@ -15,6 +15,8 @@ let
 in pkgs.writeShellApplication {
   name = "nvim";
   runtimeInputs = with pkgs; [
+    fd
+    ripgrep
     basedpyright
     ruff
     rust-analyzer
